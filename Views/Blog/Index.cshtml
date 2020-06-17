@@ -1,0 +1,37 @@
+@model PostViewModel
+<link rel="stylesheet" href="~/css/PostSite.css" />
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="row">
+<div class="col-5 " style="position: center">
+    <h1>Posts</h1>
+    <div class=" p-1"></div>
+    
+
+    <h3 style="position: center">
+        <a asp-action="Add"> AddNew</a>
+    </h3>
+
+    <div class="p-6"></div>
+
+    <div class="modal-scrollbar-measure">
+
+        <div class="p-3"></div>
+        @for (var i = Model.Posts.Count; i > 0; i--)
+        {
+            <div class="container" id="Container1">
+                <partial name="_PostPartial" model="@Model.Posts.ElementAt(i - 1)"/>
+            </div>
+        }
+
+
+    </div>
+
+
+</div>
+</div>
+
+

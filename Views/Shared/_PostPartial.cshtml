@@ -1,0 +1,26 @@
+@using Microsoft.AspNetCore.Identity
+@model Post
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p class="Title" > @Model.Title</p>
+<p class="Nickname">@Model.Owner.Nickname</p>
+<p class="Content" > @Model.Content</p>
+<p class="Summary">@Model.Summary</p>
+<p class="Time">08.03.2019</p>
+
+
+@{
+    var currentUser = UserManager.GetUserId(User);
+}
+
+@if(currentUser == Model.OwnerId){
+    <td>
+        <a asp-controller="Blog" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> 
+    </td>
+    }
+
+
